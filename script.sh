@@ -1,7 +1,7 @@
 #!/bin/bash
 # ==============================================================================
 # script.sh - Organiza el contenido de un .zip por extensión y audita el uso
-#             de la librería cv2 (OpenCV) en los archivos .py.
+#             de la librería PySide6 (Qt for Python) en los archivos .py.
 #
 # Uso: ./script.sh <archivo.zip> <directorio_destino>
 # ==============================================================================
@@ -123,28 +123,28 @@ done < <(find "$TMP_DIR" -type f -not -path '*/__MACOSX/*' -print0)
 echo "    Archivos organizados: $TOTAL_MOVED"
 
 # ------------------------------------------------------------------------------
-# REQUERIMIENTO 3: Auditoría de archivos .py en busca de cv2
+# REQUERIMIENTO 3: Auditoría de archivos .py en busca de PySide6
 # ------------------------------------------------------------------------------
 echo
 echo "=============================================="
-echo "  AUDITORÍA DE ARCHIVOS .py (búsqueda: cv2)"
+echo "  AUDITORÍA DE ARCHIVOS .py (búsqueda: PySide6)"
 echo "=============================================="
 
 TOTAL_PY=0
-CV2_PY=0
+PYSIDE_PY=0
 
 for pyfile in "${PY_FILES[@]}"; do
     TOTAL_PY=$((TOTAL_PY + 1))
     echo
     echo "Archivo: $pyfile"
 
-    if grep -q -e 'Pyside6' -- "$pyfile"; then
-        CV2_PY=$((CV2_PY + 1))
-        echo "  Contiene 'Pyside6': SÍ"
+    if grep -q -e 'PySide6' -- "$pyfile"; then
+        PYSIDE_PY=$((PYSIDE_PY + 1))
+        echo "  Contiene 'PySide6': SÍ"
         # Número de línea + línea exacta de cada coincidencia
-        grep -n -e 'Pyside6' -- "$pyfile" | sed 's/^/    /'
+        grep -n -e 'PySide6' -- "$pyfile" | sed 's/^/    /'
     else
-        echo "  Contiene 'Pyside6': NO"
+        echo "  Contiene 'PySide6': NO"
     fi
 done
 
@@ -152,7 +152,7 @@ echo
 echo "=============================================="
 echo "  RESUMEN"
 echo "=============================================="
-echo "Archivos .py analizados          : $TOTAL_PY"
-echo "Archivos .py que usan cv2        : $CV2_PY"
+echo "Archivos .py analizados            : $TOTAL_PY"
+echo "Archivos .py que usan PySide6      : $PYSIDE_PY"
 
 exit 0
