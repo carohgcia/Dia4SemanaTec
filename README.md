@@ -43,10 +43,10 @@ Crea subcarpetas dentro del directorio destino basándote en las extensiones de 
 Mueve o copia cada archivo extraído a la subcarpeta correspondiente a su extensión.
 Requerimiento 3
 Recorre exclusivamente los archivos con extensión .py.
-Busca en el contenido de estos archivos la presencia de la librería cv2 (o términos como import cv2).
+Busca en el contenido de estos archivos la presencia de la librería PySide6 (o términos como import PySide6).
 Salida en Terminal 
 Imprime el nombre o la ubicación del archivo.
-Indica explícitamente si contiene la palabra buscada (cv2).
+Indica explícitamente si contiene la palabra buscada (PySide6).
 
 ## Autores
 Diego Peralta Soto - A01648410
