@@ -41,6 +41,9 @@ _(pegar aquí el prompt de ajuste o refactoring)_
   - `feat: auditoría de cv2 en scripts python`
 - Integración a `main`/`master` mediante merge o Pull Request.
 
-## Autor
+## Autores
+Diego Peralta Soto - A01648410
+Carolina Hernández García - A01648557
+Braulio García Rayas - A0164955
 
-_(Nombre)_ · _(Materia)_ · _(Profesor)_ · 29 de octubre de 2026
+
