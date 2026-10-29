@@ -1,7 +1,7 @@
 # Dia4SemanaTec
 # Clasificación Automática de Archivos y Auditoría de Código Python
 
-Script en Bash, diseñado con apoyo de herramientas de IA, que descomprime un archivo `.zip`, organiza su contenido por extensión y audita los archivos `.py` para detectar el uso de `cv2` (OpenCV).
+Script en Bash, diseñado con apoyo de herramientas de IA, que descomprime un archivo `.zip`, organiza su contenido por extensión y audita los archivos `.py` para detectar el uso de `PySide6` (OpenCV).
 
 ## Uso
 
