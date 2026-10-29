@@ -24,22 +24,29 @@ Sintaxis: `./script.sh <archivo.zip> <directorio_destino>`
 
 ## Prompts de IA
 
-**Herramienta utilizada:** _(herramienta y modelo)_
+**Herramienta utilizada:** Claude
 
 **Prompt inicial:**
-_(pegar aquí el prompt exacto de la primera versión)_
+Actúa como un desarrollador experto en Bash y crea un script que procese un archivo comprimido, organice su contenido, investiga todo lo que necesites saber antes de crear algo, tómate tu tiempo, eres el mejor del mundo.
+Debes utilizar comandos estándar de Bash, específicamente unzip, find, grep, mkdir e if.
+Requisitos
+El script debe recibir exactamente dos argumentos desde la terminal:
+El primer argumento ($1) será la ruta de un archivo .zip a procesar.
+El segundo argumento ($2) será la ruta del directorio destino donde se organizará la información.
 
-**Prompt de corrección (si aplica):**
-_(pegar aquí el prompt de ajuste o refactoring)_
-
-## Control de versiones
-
-- Rama de trabajo: `feature/organizer-auditor`.
-- Commits sugeridos:
-  - `feat: validación de parámetros y descompresión`
-  - `feat: lógica de organización por extensión`
-  - `feat: auditoría de cv2 en scripts python`
-- Integración a `main`/`master` mediante merge o Pull Request.
+Requerimiento 1 
+Verifica que se reciban exactamente 2 argumentos usando un if. Si no es así, despliega el mensaje de error Uso: ./script.sh <archivo.zip> <directorio_destino> y termina la ejecución con exit 1.
+Comprueba mediante una validación que el archivo .zip proporcionado realmente exista en el sistema.
+Requerimiento 2
+Descomprime el archivo .zip en una carpeta temporal.
+Crea subcarpetas dentro del directorio destino basándote en las extensiones de los archivos encontrados (por ejemplo, creando carpetas llamadas py/, txt/, jpg/, etc.).
+Mueve o copia cada archivo extraído a la subcarpeta correspondiente a su extensión.
+Requerimiento 3
+Recorre exclusivamente los archivos con extensión .py.
+Busca en el contenido de estos archivos la presencia de la librería cv2 (o términos como import cv2).
+Salida en Terminal 
+Imprime el nombre o la ubicación del archivo.
+Indica explícitamente si contiene la palabra buscada (cv2).
 
 ## Autores
 Diego Peralta Soto - A01648410
