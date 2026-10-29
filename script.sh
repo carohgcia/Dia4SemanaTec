@@ -138,13 +138,13 @@ for pyfile in "${PY_FILES[@]}"; do
     echo
     echo "Archivo: $pyfile"
 
-    if grep -q -e 'cv2' -- "$pyfile"; then
+    if grep -q -e 'Pyside6' -- "$pyfile"; then
         CV2_PY=$((CV2_PY + 1))
-        echo "  Contiene 'cv2': SÍ"
+        echo "  Contiene 'Pyside6': SÍ"
         # Número de línea + línea exacta de cada coincidencia
-        grep -n -e 'cv2' -- "$pyfile" | sed 's/^/    /'
+        grep -n -e 'Pyside6' -- "$pyfile" | sed 's/^/    /'
     else
-        echo "  Contiene 'cv2': NO"
+        echo "  Contiene 'Pyside6': NO"
     fi
 done
 
