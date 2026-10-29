@@ -1,7 +1,8 @@
 #!/bin/bash
 # ==============================================================================
-# script.sh - Organiza el contenido de un .zip por extensión y audita el uso
-#             de la librería PySide6 (Qt for Python) en los archivos .py.
+# script.sh - Organiza el contenido de un .zip por extensión, audita el uso
+#             de la librería PySide6 (Qt for Python) en los archivos .py y
+#             mueve los que la usan a la subcarpeta py/pyside6.
 #
 # Uso: ./script.sh <archivo.zip> <directorio_destino>
 # ==============================================================================
@@ -124,6 +125,7 @@ echo "    Archivos organizados: $TOTAL_MOVED"
 
 # ------------------------------------------------------------------------------
 # REQUERIMIENTO 3: Auditoría de archivos .py en busca de PySide6
+#                  y movimiento de los que la usan a py/pyside6
 # ------------------------------------------------------------------------------
 echo
 echo "=============================================="
@@ -132,6 +134,7 @@ echo "=============================================="
 
 TOTAL_PY=0
 PYSIDE_PY=0
+PYSIDE_DIR="$DEST_DIR/py/pyside6"
 
 for pyfile in "${PY_FILES[@]}"; do
     TOTAL_PY=$((TOTAL_PY + 1))
@@ -143,6 +146,12 @@ for pyfile in "${PY_FILES[@]}"; do
         echo "  Contiene 'PySide6': SÍ"
         # Número de línea + línea exacta de cada coincidencia
         grep -n -e 'PySide6' -- "$pyfile" | sed 's/^/    /'
+
+        # Mover el archivo a la subcarpeta py/pyside6
+        mkdir -p "$PYSIDE_DIR"
+        new_path=$(unique_path "$PYSIDE_DIR" "$(basename "$pyfile")")
+        mv -- "$pyfile" "$new_path"
+        echo "  Movido a: $new_path"
     else
         echo "  Contiene 'PySide6': NO"
     fi
@@ -156,3 +165,4 @@ echo "Archivos .py analizados            : $TOTAL_PY"
 echo "Archivos .py que usan PySide6      : $PYSIDE_PY"
 
 exit 0
+
