@@ -19,8 +19,8 @@ Sintaxis: `./script.sh <archivo.zip> <directorio_destino>`
 
 1. **Validación:** exige exactamente 2 argumentos y comprueba que el `.zip` exista. Si falla, muestra el mensaje de uso y termina con `exit 1`.
 2. **Organización:** descomprime en una carpeta temporal y mueve cada archivo a una subcarpeta del destino según su extensión (`py/`, `txt/`, `jpg/`, `otros/`, etc.).
-3. **Auditoría:** revisa solo los archivos `.py` buscando `cv2`, `import cv2` u `opencv`. Por cada archivo imprime su ubicación, si contiene la coincidencia y el número y texto de cada línea encontrada (`grep -n`).
-4. **Resumen final:** total de archivos `.py` analizados y cuántos usan `cv2`.
+3. **Auditoría:** revisa solo los archivos `.py` buscando `PySide6`. Por cada archivo imprime su ubicación, si contiene la coincidencia y el número y texto de cada línea encontrada (`grep -n`).
+4. **Resumen final:** total de archivos `.py` analizados y cuántos usan `PySide6`.
 
 ## Prompts de IA
 
